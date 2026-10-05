@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Control de Proyectos ENEL · Mínima Arquitectos</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='black'/><rect x='8' y='12' width='7' height='7' fill='%23e8622a'/><rect x='17' y='12' width='7' height='7' fill='%23e8622a'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Inicio de sesión con Microsoft 365 (solo si config.js tiene clientId) -->
+<div id="login" class="login" hidden>
+  <div class="login-card">
+    <img src="assets/logo-minima-blanco.png" alt="Mínima Arquitectos" class="login-logo">
+    <h1>Control de Proyectos ENEL</h1>
+    <p>Ingresa con tu cuenta de Microsoft 365 de Mínima. La información se guarda en SharePoint y solo la ven las personas con acceso al sitio.</p>
+    <button class="btn primary lg" onclick="Store.login()">
+      <svg width="16" height="16" viewBox="0 0 21 21" aria-hidden="true"><rect width="10" height="10" fill="#f25022"/><rect x="11" width="10" height="10" fill="#7fba00"/><rect y="11" width="10" height="10" fill="#00a4ef"/><rect x="11" y="11" width="10" height="10" fill="#ffb900"/></svg>
+      Iniciar sesión con Microsoft
+    </button>
+    <p id="login-err" class="login-err"></p>
+  </div>
+</div>
+
+<div id="shell" class="shell" hidden>
+  <aside class="side">
+    <div class="brand">
+      <img src="assets/logo-minima-blanco.png" alt="Mínima Arquitectos">
+      <span>Control de proyectos ENEL</span>
+    </div>
+    <nav id="nav" class="nav"></nav>
+    <div class="side-foot">
+      <div id="user" class="user"></div>
+      <div id="sync" class="sync"></div>
+    </div>
+  </aside>
+  <div class="main">
+    <header class="top">
+      <button class="icon-btn menu" onclick="document.body.classList.toggle('nav-open')" aria-label="Menú">☰</button>
+      <div class="qsearch">
+        <input id="qs" type="search" placeholder="Ir a proyecto: código o nombre" oninput="A.quick(this.value)" aria-label="Buscar proyecto">
+        <div id="qres" class="qres" hidden></div>
+      </div>
+    </header>
+    <main id="view" class="view" tabindex="-1"></main>
+  </div>
+</div>
+
+<div id="modal" class="modal" hidden></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<!-- Librerías: Microsoft Authentication Library y SheetJS (lectura/escritura de Excel) -->
+<script src="https://cdn.jsdelivr.net/npm/@azure/msal-browser@3.30.0/lib/msal-browser.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/util.js"></script>
+<script src="js/store.js"></script>
+<script src="js/importer.js"></script>
+<script src="js/app.js"></script>
+<script src="js/views.js"></script>
+<script>A.start();</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+# Nunca subir datos de proyectos al repositorio
+*.xlsx
+*.xlsm
+*.xls
+*.csv
+*.json
+!package.json
+.DS_Store
